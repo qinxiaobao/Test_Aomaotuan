@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+
+         http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd" default-autowire="byType">
+
+
+    <!-- springmvc想让其他几个Spring的组件开始工作，可以直接配置一个驱动注解式自动注入-->
+    <mvc:annotation-driven></mvc:annotation-driven>
+
+    <!--配置springmvc静态资源过滤 -->
+    <mvc:resources mapping="/resources/**"  location="/" />
+    <mvc:default-servlet-handler></mvc:default-servlet-handler>
+
+
+    <!--用户自己书写的control组件也采用springmvc的注解式配置，但是需要配置包扫描，让springmvc知道哪些类应该是control-->
+    <context:component-scan base-package="com.oracle"></context:component-scan>
+
+    <!--配置springmvc的视图解析器组件-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          p:viewClass="org.springframework.web.servlet.view.JstlView"
+          p:prefix="/"
+          p:suffix=".jsp" />
+
+
+    <!--配置mybatis扫描包里面的类那些加了注解式配置 -->
+    <mybatis:scan base-package="com.oracle.ssm.model.dao"></mybatis:scan>
+
+
+    <!--配置spring的包扫描,扫描哪些类加载了spring的注解-->
+    <context:component-scan base-package="com.oracle"></context:component-scan>
+
+
+    <!-- 配置spring读取自定义的属性文件-->
+    <context:property-placeholder location="classpath*:jdbc.properties"></context:property-placeholder>
+
+
+    <!-- 定义spring管理的DataSource对象-->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+        <property name="url" value="jdbc:mysql://localhost:3306/shop?characterEncoding=utf8"></property>
+        <property name="username" value="root"></property>
+        <property name="password" value="root"></property>
+    </bean>
+
+
+    <!-- 定义spring管理的sessionFactory对象-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"></property>
+        <property name="mapperLocations" value="classpath*:com/oracle/ssm/model/dao/*.java"></property>
+    </bean>
+
+
+    <!--定义spring管理的sqlSession对象-->
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg ref="sqlSessionFactory"></constructor-arg>
+    </bean>
+
+
+    <!--定义事务管理器对象 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+
+
+    <!--配置注解式事务注入策略 -->
+    <tx:annotation-driven proxy-target-class="true"></tx:annotation-driven>
+
+</beans>

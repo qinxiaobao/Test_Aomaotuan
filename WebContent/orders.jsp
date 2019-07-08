@@ -18,9 +18,6 @@
 <link rel="stylesheet" href="css/Member.css">
 </head>
 <body>
-	test sdfsfsdfsdd
-
-
 	<header class="wrap-all">
 		<div class="head center_1200">
 			<!-- 头部左边 -->

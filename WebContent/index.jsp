@@ -41,7 +41,10 @@
 						<a  href="login.jsp">登录</a> <span>|</span> <a
 						target="_blank" href="#">免费注册</a>
 						<%}else{ %>
-							欢迎您：<B style="text-shadow: 0px 0px 1px green"><%=((Users)session.getAttribute("logineduser")).getUserNickname() %></B>!
+							欢迎您：<B style="text-shadow: 0px 0px 1px green"><%=((Users)session.getAttribute("logineduser")).getNicheng() %></B>!
+							
+							<%---这里应该是让安全退出的超级链接请求到后台的control方法，
+							方法里需要移除之前在session中保存的用户信息，然后后台直接跳转道网站首页？？？ --%>
 							<a href="">安全退出</a>
 							<%
 						} %>
@@ -218,7 +221,7 @@
 			</div>
 		</div>
 		<!--购物车-->
-		<a href="#" class="buy_car">
+		<a href="car/list" class="buy_car">
 			<p>购物车</p> <em>0</em>
 		</a>
 		<!-- 新会员 -->
@@ -859,20 +862,20 @@
 								<em></em>收藏
 							</div> <!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
 							<div class="show">
-								<a class="add" href="#">加入购物车</a> <a class="contrast" href="#">商品对比</a>
+								<a class="add" href="car/add?pid=<%=g.getGoodsid() %>">加入购物车</a> <a class="contrast" href="#">商品对比</a>
 							</div>
 							<div class="proImg">
-								<a href="#"> <img class="lazy" src="<%=g.getGoodsPrice()%>"
-									data-original="<%=g.getGoodsPrice()%>" alt="">
+								<a href="#"> <img class="lazy" src="<%=g.getGoodspic()%>"
+									data-original="<%=g.getGoodspic()%>" alt="">
 								</a>
 							</div>
 							<div class="proTxt">
 								<p>
-									<a href="#"><%=g.getGoodsName()%></a>
+									<a href="#"><%=g.getGoodsname()%></a>
 								</p>
-								<p class="num"><%=g.getGoodsNumbers()%></p>
+								<p class="num"><%=g.getGoodsnumber()%></p>
 								<p>
-									<strong>￥<%=g.getGoodsPrice()%></strong> <s>￥<%=g.getGoodsPrice()%></s>
+									<strong>￥<%=g.getGoodsprice()%></strong> <s>￥<%=g.getGoodsprice()%></s>
 								</p>
 							</div>
 						</li>

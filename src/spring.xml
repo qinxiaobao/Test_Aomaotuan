@@ -37,7 +37,7 @@
 
 
     <!--配置mybatis扫描包里面的类那些加了注解式配置 -->
-    <mybatis:scan base-package="com.oracle.ssm.model.dao"></mybatis:scan>
+    <mybatis:scan base-package="com.oracle.shop.model"></mybatis:scan>
 
 
     <!--配置spring的包扫描,扫描哪些类加载了spring的注解-->
@@ -51,7 +51,7 @@
     <!-- 定义spring管理的DataSource对象-->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-        <property name="url" value="jdbc:mysql://localhost:3306/shop?characterEncoding=utf8"></property>
+        <property name="url" value="jdbc:mysql://localhost:3306/shop_db?characterEncoding=utf8"></property>
         <property name="username" value="root"></property>
         <property name="password" value="root"></property>
     </bean>
@@ -60,7 +60,7 @@
     <!-- 定义spring管理的sessionFactory对象-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"></property>
-        <property name="mapperLocations" value="classpath*:com/oracle/ssm/model/dao/*.java"></property>
+        <property name="mapperLocations" value="classpath*:com/oracle/shop/model/dao/*.java"></property>
     </bean>
 
 

@@ -14,22 +14,22 @@ public class Orders implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/** 订单编号. */
-	private Integer orderId;
+	private Integer orderid;
 
 	/** 下单时间. */
-	private String orderTime;
+	private String orderdate;
 
 	/** 订单状态. */
-	private String orderStates;
+	private String orderstatus;
+
+	/** 收货地址. */
+	private String address;
+
+	/** 备注. */
+	private String remarks;
 
 	/** 用户编号. */
-	private Integer userId;
-
-	/** 订单地址. */
-	private String orderAddress;
-
-	/** 订单备注. */
-	private String orderRemark;
+	private Integer userid;
 
 	/**
 	 * 僐儞僗僩儔僋僞.
@@ -40,11 +40,11 @@ public class Orders implements Serializable {
 	/**
 	 * 订单编号 傪愝掕偟傑偡.
 	 * 
-	 * @param orderId
+	 * @param orderid
 	 *            订单编号
 	 */
-	public void setOrderId(Integer orderId) {
-		this.orderId = orderId;
+	public void setOrderid(Integer orderid) {
+		this.orderid = orderid;
 	}
 
 	/**
@@ -52,18 +52,18 @@ public class Orders implements Serializable {
 	 * 
 	 * @return 订单编号
 	 */
-	public Integer getOrderId() {
-		return this.orderId;
+	public Integer getOrderid() {
+		return this.orderid;
 	}
 
 	/**
 	 * 下单时间 傪愝掕偟傑偡.
 	 * 
-	 * @param orderTime
+	 * @param orderdate
 	 *            下单时间
 	 */
-	public void setOrderTime(String orderTime) {
-		this.orderTime = orderTime;
+	public void setOrderdate(String orderdate) {
+		this.orderdate = orderdate;
 	}
 
 	/**
@@ -71,18 +71,18 @@ public class Orders implements Serializable {
 	 * 
 	 * @return 下单时间
 	 */
-	public String getOrderTime() {
-		return this.orderTime;
+	public String getOrderdate() {
+		return this.orderdate;
 	}
 
 	/**
 	 * 订单状态 傪愝掕偟傑偡.
 	 * 
-	 * @param orderStates
+	 * @param orderstatus
 	 *            订单状态
 	 */
-	public void setOrderStates(String orderStates) {
-		this.orderStates = orderStates;
+	public void setOrderstatus(String orderstatus) {
+		this.orderstatus = orderstatus;
 	}
 
 	/**
@@ -90,18 +90,56 @@ public class Orders implements Serializable {
 	 * 
 	 * @return 订单状态
 	 */
-	public String getOrderStates() {
-		return this.orderStates;
+	public String getOrderstatus() {
+		return this.orderstatus;
+	}
+
+	/**
+	 * 收货地址 傪愝掕偟傑偡.
+	 * 
+	 * @param address
+	 *            收货地址
+	 */
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	/**
+	 * 收货地址 傪庢摼偟傑偡.
+	 * 
+	 * @return 收货地址
+	 */
+	public String getAddress() {
+		return this.address;
+	}
+
+	/**
+	 * 备注 傪愝掕偟傑偡.
+	 * 
+	 * @param remarks
+	 *            备注
+	 */
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
+
+	/**
+	 * 备注 傪庢摼偟傑偡.
+	 * 
+	 * @return 备注
+	 */
+	public String getRemarks() {
+		return this.remarks;
 	}
 
 	/**
 	 * 用户编号 傪愝掕偟傑偡.
 	 * 
-	 * @param userId
+	 * @param userid
 	 *            用户编号
 	 */
-	public void setUserId(Integer userId) {
-		this.userId = userId;
+	public void setUserid(Integer userid) {
+		this.userid = userid;
 	}
 
 	/**
@@ -109,46 +147,8 @@ public class Orders implements Serializable {
 	 * 
 	 * @return 用户编号
 	 */
-	public Integer getUserId() {
-		return this.userId;
-	}
-
-	/**
-	 * 订单地址 傪愝掕偟傑偡.
-	 * 
-	 * @param orderAddress
-	 *            订单地址
-	 */
-	public void setOrderAddress(String orderAddress) {
-		this.orderAddress = orderAddress;
-	}
-
-	/**
-	 * 订单地址 傪庢摼偟傑偡.
-	 * 
-	 * @return 订单地址
-	 */
-	public String getOrderAddress() {
-		return this.orderAddress;
-	}
-
-	/**
-	 * 订单备注 傪愝掕偟傑偡.
-	 * 
-	 * @param orderRemark
-	 *            订单备注
-	 */
-	public void setOrderRemark(String orderRemark) {
-		this.orderRemark = orderRemark;
-	}
-
-	/**
-	 * 订单备注 傪庢摼偟傑偡.
-	 * 
-	 * @return 订单备注
-	 */
-	public String getOrderRemark() {
-		return this.orderRemark;
+	public Integer getUserid() {
+		return this.userid;
 	}
 
 	/**
@@ -158,7 +158,7 @@ public class Orders implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((orderId == null) ? 0 : orderId.hashCode());
+		result = prime * result + ((orderid == null) ? 0 : orderid.hashCode());
 
 		return result;
 	}
@@ -178,11 +178,11 @@ public class Orders implements Serializable {
 			return false;
 		}
 		Orders other = (Orders) obj;
-		if (orderId == null) {
-			if (other.orderId != null) {
+		if (orderid == null) {
+			if (other.orderid != null) {
 				return false;
 			}
-		} else if (!orderId.equals(other.orderId)) {
+		} else if (!orderid.equals(other.orderid)) {
 			return false;
 		}
 

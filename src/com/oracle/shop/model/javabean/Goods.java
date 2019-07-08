@@ -14,22 +14,22 @@ public class Goods implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/** 商品编号. */
-	private Integer goodsId;
+	private Integer goodsid;
 
 	/** 商品名称. */
-	private String goodsName;
+	private String goodsname;
 
-	/** 品牌名. */
-	private String goodsBrand;
+	/** 商品类型. */
+	private String goodstype;
 
 	/** 商品价格. */
-	private Double goodsPrice;
+	private Double goodsprice;
 
 	/** 商品数量. */
-	private Integer goodsNumbers;
+	private Integer goodsnumber;
 
 	/** 商品图片. */
-	private String goodsImage;
+	private String goodspic;
 
 	/**
 	 * 僐儞僗僩儔僋僞.
@@ -40,11 +40,11 @@ public class Goods implements Serializable {
 	/**
 	 * 商品编号 傪愝掕偟傑偡.
 	 * 
-	 * @param goodsId
+	 * @param goodsid
 	 *            商品编号
 	 */
-	public void setGoodsId(Integer goodsId) {
-		this.goodsId = goodsId;
+	public void setGoodsid(Integer goodsid) {
+		this.goodsid = goodsid;
 	}
 
 	/**
@@ -52,18 +52,18 @@ public class Goods implements Serializable {
 	 * 
 	 * @return 商品编号
 	 */
-	public Integer getGoodsId() {
-		return this.goodsId;
+	public Integer getGoodsid() {
+		return this.goodsid;
 	}
 
 	/**
 	 * 商品名称 傪愝掕偟傑偡.
 	 * 
-	 * @param goodsName
+	 * @param goodsname
 	 *            商品名称
 	 */
-	public void setGoodsName(String goodsName) {
-		this.goodsName = goodsName;
+	public void setGoodsname(String goodsname) {
+		this.goodsname = goodsname;
 	}
 
 	/**
@@ -71,37 +71,37 @@ public class Goods implements Serializable {
 	 * 
 	 * @return 商品名称
 	 */
-	public String getGoodsName() {
-		return this.goodsName;
+	public String getGoodsname() {
+		return this.goodsname;
 	}
 
 	/**
-	 * 品牌名 傪愝掕偟傑偡.
+	 * 商品类型 傪愝掕偟傑偡.
 	 * 
-	 * @param goodsBrand
-	 *            品牌名
+	 * @param goodstype
+	 *            商品类型
 	 */
-	public void setGoodsBrand(String goodsBrand) {
-		this.goodsBrand = goodsBrand;
+	public void setGoodstype(String goodstype) {
+		this.goodstype = goodstype;
 	}
 
 	/**
-	 * 品牌名 傪庢摼偟傑偡.
+	 * 商品类型 傪庢摼偟傑偡.
 	 * 
-	 * @return 品牌名
+	 * @return 商品类型
 	 */
-	public String getGoodsBrand() {
-		return this.goodsBrand;
+	public String getGoodstype() {
+		return this.goodstype;
 	}
 
 	/**
 	 * 商品价格 傪愝掕偟傑偡.
 	 * 
-	 * @param goodsPrice
+	 * @param goodsprice
 	 *            商品价格
 	 */
-	public void setGoodsPrice(Double goodsPrice) {
-		this.goodsPrice = goodsPrice;
+	public void setGoodsprice(Double goodsprice) {
+		this.goodsprice = goodsprice;
 	}
 
 	/**
@@ -109,18 +109,18 @@ public class Goods implements Serializable {
 	 * 
 	 * @return 商品价格
 	 */
-	public Double getGoodsPrice() {
-		return this.goodsPrice;
+	public Double getGoodsprice() {
+		return this.goodsprice;
 	}
 
 	/**
 	 * 商品数量 傪愝掕偟傑偡.
 	 * 
-	 * @param goodsNumbers
+	 * @param goodsnumber
 	 *            商品数量
 	 */
-	public void setGoodsNumbers(Integer goodsNumbers) {
-		this.goodsNumbers = goodsNumbers;
+	public void setGoodsnumber(Integer goodsnumber) {
+		this.goodsnumber = goodsnumber;
 	}
 
 	/**
@@ -128,18 +128,18 @@ public class Goods implements Serializable {
 	 * 
 	 * @return 商品数量
 	 */
-	public Integer getGoodsNumbers() {
-		return this.goodsNumbers;
+	public Integer getGoodsnumber() {
+		return this.goodsnumber;
 	}
 
 	/**
 	 * 商品图片 傪愝掕偟傑偡.
 	 * 
-	 * @param goodsImage
+	 * @param goodspic
 	 *            商品图片
 	 */
-	public void setGoodsImage(String goodsImage) {
-		this.goodsImage = goodsImage;
+	public void setGoodspic(String goodspic) {
+		this.goodspic = goodspic;
 	}
 
 	/**
@@ -147,8 +147,8 @@ public class Goods implements Serializable {
 	 * 
 	 * @return 商品图片
 	 */
-	public String getGoodsImage() {
-		return this.goodsImage;
+	public String getGoodspic() {
+		return this.goodspic;
 	}
 
 	/**
@@ -158,7 +158,7 @@ public class Goods implements Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((goodsId == null) ? 0 : goodsId.hashCode());
+		result = prime * result + ((goodsid == null) ? 0 : goodsid.hashCode());
 
 		return result;
 	}
@@ -178,11 +178,11 @@ public class Goods implements Serializable {
 			return false;
 		}
 		Goods other = (Goods) obj;
-		if (goodsId == null) {
-			if (other.goodsId != null) {
+		if (goodsid == null) {
+			if (other.goodsid != null) {
 				return false;
 			}
-		} else if (!goodsId.equals(other.goodsId)) {
+		} else if (!goodsid.equals(other.goodsid)) {
 			return false;
 		}
 

@@ -1,3 +1,4 @@
+<%@page import="com.oracle.shop.model.javabean.Users"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.oracle.shop.model.javabean.Goods"%>
 <%@page import="java.util.List"%>
@@ -36,8 +37,14 @@
 					</a>
 				</div>
 				<div class="user">
-					<a target="_blank" href="#">登录</a> <span>|</span> <a
+					<% if(session.getAttribute("logineduser")==null){ %>
+						<a  href="login.jsp">登录</a> <span>|</span> <a
 						target="_blank" href="#">免费注册</a>
+						<%}else{ %>
+							欢迎您：<B style="text-shadow: 0px 0px 1px green"><%=((Users)session.getAttribute("logineduser")).getUserNickname() %></B>!
+							<a href="">安全退出</a>
+							<%
+						} %>
 				</div>
 				<div class="phone">
 					<a href="#"> <em></em> <span>手机逛澳猫</span>
@@ -847,7 +854,7 @@
 														for(Goods  g:gs){
 						%>
 
-						<li>
+						<li style="margin-right: 8px">
 							<div class="hoverShow collect">
 								<em></em>收藏
 							</div> <!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
@@ -855,8 +862,8 @@
 								<a class="add" href="#">加入购物车</a> <a class="contrast" href="#">商品对比</a>
 							</div>
 							<div class="proImg">
-								<a href="#"> <img class="lazy" src="<%=g.getGoodsImage()%>"
-									data-original="<%=g.getGoodsImage()%>" alt="">
+								<a href="#"> <img class="lazy" src="<%=g.getGoodsPrice()%>"
+									data-original="<%=g.getGoodsPrice()%>" alt="">
 								</a>
 							</div>
 							<div class="proTxt">

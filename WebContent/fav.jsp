@@ -5,11 +5,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
-	if(request.getAttribute("gs")==null){
-	request.getRequestDispatcher("product/list?page=1").forward(request, response);
-}
-%>
-<%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
 	+ request.getServerName() + ":" + request.getServerPort()
@@ -20,7 +15,7 @@
 <head>
 <base href="<%=basePath%>">
 <meta charset="UTF-8">
-<title>列表-澳猫团</title>
+<title>收藏夹-澳猫团</title>
 <link rel="shortcut icon" href="images/favicon.jpg">
 <link rel="bookmark"href="images/favicon.jpg" />
 <link rel="stylesheet" href="css/reset.css">
@@ -38,17 +33,25 @@
 					</a>
 				</div>
 				<div class="user">
-					<% if(session.getAttribute("logineduser")==null){ %>
-						<a  href="login.jsp">登录</a> <span>|</span> <a
-						target="_blank" href="register.jsp">免费注册</a>
-						<%}else{ %>
-							<img src="<%=((Users)session.getAttribute("logineduser")).getUserimage()%>" style="width: 16px;height: 16px;border-radius:8px;border:1px solid black;margin-left: 5px;margin-right: 5px;position: relative;top: 5px;box-shadow:0px 0px 2px green"/>欢迎您：<B style="text-shadow: 0px 0px 1px green"><%=((Users)session.getAttribute("logineduser")).getNicheng() %></B>!
-							
-							<%---这里应该是让安全退出的超级链接请求到后台的control方法，
+					<%
+						if(session.getAttribute("logineduser")==null){
+					%>
+					<a href="login.jsp">登录</a> <span>|</span> <a target="_blank"
+						href="register.jsp">免费注册</a>
+					<%
+						}else{
+					%>
+					<img
+						src="<%=((Users)session.getAttribute("logineduser")).getUserimage()%>"
+						style="width: 16px; height: 16px; border-radius: 8px; border: 1px solid black; margin-left: 5px; margin-right: 5px; position: relative; top: 5px; box-shadow: 0px 0px 2px green" />欢迎您：<B
+						style="text-shadow: 0px 0px 1px green"><%=((Users)session.getAttribute("logineduser")).getNicheng()%></B>!
+
+					<%---这里应该是让安全退出的超级链接请求到后台的control方法，
 							方法里需要移除之前在session中保存的用户信息，然后后台直接跳转道网站首页？？？ --%>
-							<a href="user/out">安全退出</a>
-							<%
-						} %>
+					<a href="user/out">安全退出</a>
+					<%
+						}
+					%>
 				</div>
 				<div class="phone">
 					<a href="#"> <em></em> <span>手机逛澳猫</span>
@@ -59,7 +62,7 @@
 			<!-- 头部右边 -->
 			<div class="headRight">
 				<ul>
-					<li><a href="cart.jsp">我的订单</a></li>
+					<li><a href="#">我的订单</a></li>
 					<span>|</span>
 					<li class="erWrap"><strong></strong> <a href="#">个人中心</a> <em></em>
 						<p class="headEr">
@@ -77,7 +80,7 @@
 					<span>|</span>
 					<li class="erWrap"><a href="#">收藏夹</a> <em></em>
 						<p class="headEr different">
-							<a href="fav/list">收藏的宝贝</a> <a class="last" href="fav/list">收藏的品牌</a>
+							<a href="#">收藏的宝贝</a> <a class="last" href="#">收藏的品牌</a>
 						</p></li>
 					<span>|</span>
 					<li class="erWrap"><a href="#">帮助中心</a> <em></em>
@@ -552,317 +555,29 @@
 		</div>
 	</div>
 	<div class="mainArea">
-		<!-- 位置导航 -->
-		<div class="subnav w1190">
-			<ul class="SNLeft">
-				<li><a href="#">澳猫团</a></li>
-				<li>></li>
-				<li><a href="#">美妆个护</a></li>
-			</ul>
-		</div>
 		<!-- 主要内容 -->
 		<div class="content w1190 clearfix">
-			<!-- 侧边 -->
-			<div class="sidebar">
-				<!-- 全部分类 -->
-				<div class="classify">
-					<h3>美妆个护</h3>
-					<div class="ClaCont">
-						<dl>
-							<dt>
-								<a href="#">护肤</a>
-							</dt>
-							<dd class="cli">
-								<em></em>
-								<ul>
-									<li><a href="#">·&nbsp;&nbsp;面部洗护</a></li>
-									<li><a href="#">·&nbsp;&nbsp;眼部护理</a></li>
-									<li><a href="#">·&nbsp;&nbsp;唇部护理</a></li>
-									<li><a href="#">·&nbsp;&nbsp;祛斑祛痘</a></li>
-									<li><a href="#">·&nbsp;&nbsp;手足洗护</a></li>
-									<li><a href="#">·&nbsp;&nbsp;眼部护理</a></li>
-									<li><a href="#">·&nbsp;&nbsp;防晒修复</a></li>
-								</ul>
-							</dd>
-							<dt>
-								<a href="#">个人洗护</a>
-							</dt>
-							<dd>
-								<em></em>
-								<ul>
-									<li><a href="#">·&nbsp;&nbsp;沐浴护肤</a></li>
-									<li><a href="#">·&nbsp;&nbsp;洗发护发</a></li>
-									<li><a href="#">·&nbsp;&nbsp;口腔护理</a></li>
-								</ul>
-							</dd>
-							<dt>
-								<a href="#">健康生活</a>
-							</dt>
-							<dd>
-								<em></em>
-								<ul>
-									<li><a href="#">·&nbsp;&nbsp;消毒液</a></li>
-									<li><a href="#">·&nbsp;&nbsp;洗洁精</a></li>
-								</ul>
-							</dd>
-							<!-- 
-							<dt><a href="#">个人洗护</a></dt>
-							<dd>
-								<em></em>
-								<ul>
-									<li><a href="#">·&nbsp;&nbsp;口腔护理</a></li>
-									<li><a href="#">·&nbsp;&nbsp;沐浴护肤</a></li>
-									<li><a href="#">·&nbsp;&nbsp;洗发护发</a></li>
-								</ul>
-							</dd>
-							<dt><a href="#">护肤</a></dt>
-							<dd>
-								<em></em>
-								<ul>
-									<li><a href="#">·&nbsp;&nbsp;防晒修复</a></li>
-									<li><a href="#">·&nbsp;&nbsp;面部洗护</a></li>
-									<li><a href="#">·&nbsp;&nbsp;祛斑祛痘</a></li>
-									<li><a href="#">·&nbsp;&nbsp;手足洗护</a></li>
-									<li><a href="#">·&nbsp;&nbsp;眼、唇部护理</a></li>
-								</ul>
-							</dd>
-							<dt><a href="#">健康生活</a></dt>
-							<dd>
-								<em></em>
-								<ul>
-									<li><a href="#">·&nbsp;&nbsp;洗洁精</a></li>
-									<li><a href="#">·&nbsp;&nbsp;消毒液</a></li>
-								</ul>
-							</dd>
-							<dt><a href="#">美容养颜</a></dt>
-							<dd>
-								<em></em>
-								<ul>
-									<li><a href="#">·&nbsp;&nbsp;补气养血</a></li>
-									<li><a href="#">·&nbsp;&nbsp;胶原蛋白</a></li>
-									<li><a href="#">·&nbsp;&nbsp;排毒养颜</a></li>
-									<li><a href="#">·&nbsp;&nbsp;完美身材</a></li>
-								</ul>
-							</dd>
-							<dt><a href="#">女性护理</a></dt>
-							<dd>
-								<em></em>
-								<ul>
-									<li><a href="#">·&nbsp;&nbsp;私处洗液</a></li>
-									<li><a href="#">·&nbsp;&nbsp;卫生巾</a></li>
-								</ul>
-							</dd>
-							<dt><a href="#">宝宝用品</a></dt>
-							<dd>
-								<em></em>
-								<ul>
-									<li><a href="#">·&nbsp;&nbsp;护肤</a></li>
-									<li><a href="#">·&nbsp;&nbsp;驱蚊</a></li>
-									<li><a href="#">·&nbsp;&nbsp;洗漱</a></li>
-								</ul>
-							</dd>
-							<dt><a href="#">辅食营养</a></dt>
-							<dd>
-								<em></em>
-								<ul>
-									<li><a href="#">·&nbsp;&nbsp;辅食代餐</a></li>
-									<li><a href="#">·&nbsp;&nbsp;抗感冒/止咳</a></li>
-									<li><a href="#">·&nbsp;&nbsp;营养品</a></li>
-								</ul>
-							</dd>
-							<dt><a href="#">奶粉</a></dt>
-							<dd>
-								<em></em>
-								<ul>
-									<li><a href="#">·&nbsp;&nbsp;1段 0-6个月</a></li>
-									<li><a href="#">·&nbsp;&nbsp;2段 6-12个月</a></li>
-									<li><a href="#">·&nbsp;&nbsp;3段 1-3岁</a></li>
-									<li><a href="#">·&nbsp;&nbsp;4段 3-6岁</a></li>
-								</ul>
-							</dd>
-							<dt><a href="#">孕妈专用</a></dt>
-							<dd>
-								<em></em>
-								<ul>
-									<li><a href="#">·&nbsp;&nbsp;哺乳期</a></li>
-									<li><a href="#">·&nbsp;&nbsp;孕期营养</a></li>
-									<li><a href="#">·&nbsp;&nbsp;孕前备孕</a></li>
-								</ul>
-							</dd>
-							<dt><a href="#">心脑血管</a></dt>
-							<dd>
-								<em></em>
-								<ul>
-									<li><a href="#">·&nbsp;&nbsp;降糖</a></li>
-									<li><a href="#">·&nbsp;&nbsp;养心</a></li>
-								</ul>
-							</dd>
-							<dt><a href="#">滋补养生</a></dt>
-							<dd>
-								<em></em>
-								<ul>
-									<li><a href="#">·&nbsp;&nbsp;高钙奶粉</a></li>
-									<li><a href="#">·&nbsp;&nbsp;维骨力</a></li>
-								</ul>
-							</dd>
-							<dt><a href="#">男士保健</a></dt>
-							<dd>
-								<em></em>
-								<ul>
-									<li><a href="#">·&nbsp;&nbsp;前列康</a></li>
-									<li><a href="#">·&nbsp;&nbsp;强精补肾</a></li>
-								</ul>
-							</dd>
-							<dt><a href="#">营养保健</a></dt>
-							<dd>
-								<em></em>
-								<ul>
-									<li><a href="#">·&nbsp;&nbsp;蜂蜜/蜂胶</a></li>
-									<li><a href="#">·&nbsp;&nbsp;维生素/矿物质</a></li>
-									<li><a href="#">·&nbsp;&nbsp;鱼油</a></li>
-								</ul>
-							</dd>
-							<dt><a href="#">职场白领</a></dt>
-							<dd class="last">
-								<em></em>
-								<ul>
-									<li><a href="#">·&nbsp;&nbsp;护肝</a></li>
-									<li><a href="#">·&nbsp;&nbsp;护眼</a></li>
-									<li><a href="#">·&nbsp;&nbsp;其他</a></li>
-								</ul>
-							</dd> -->
-						</dl>
-					</div>
-				</div>
-				<!-- 热卖排行榜 -->
-				<div class="hotSale">
-					<h3>热卖排行榜</h3>
-					<div class="HRproduct">
-						<ul>
-							<li>
-								<div class="HRpic">
-									<a href="#"> <img class="lazy" src="js/lazyload/grey.gif"
-										data-original="images/lproduct7.png" alt="">
-									</a>
-								</div>
-								<div class="HRtxt">
-									<p>
-										<a href="#">Sukin苏芊 玫瑰果补湿日霜 120毫升</a>
-									</p>
-									<p class="clearfix">
-										<strong class="c065">￥89</strong> <s>￥399</s>
-									</p>
-								</div>
-							</li>
-							<li>
-								<div class="HRpic">
-									<a href="#"> <img class="lazy" src="js/lazyload/grey.gif"
-										data-original="images/lproduct7.png" alt="">
-									</a>
-								</div>
-								<div class="HRtxt">
-									<p>
-										<a href="#">Sukin苏芊 玫瑰果补湿日霜 120毫升</a>
-									</p>
-									<p class="clearfix">
-										<strong class="c065">￥89</strong> <s>￥399</s>
-									</p>
-								</div>
-							</li>
-							<li>
-								<div class="HRpic">
-									<a href="#"> <img class="lazy" src="js/lazyload/grey.gif"
-										data-original="images/lproduct7.png" alt="">
-									</a>
-								</div>
-								<div class="HRtxt">
-									<p>
-										<a href="#">Sukin苏芊 玫瑰果补湿日霜 120毫升</a>
-									</p>
-									<p class="clearfix">
-										<strong class="c065">￥89</strong> <s>￥399</s>
-									</p>
-								</div>
-							</li>
-							<li>
-								<div class="HRpic">
-									<a href="#"> <img class="lazy" src="js/lazyload/grey.gif"
-										data-original="images/lproduct7.png" alt="">
-									</a>
-								</div>
-								<div class="HRtxt">
-									<p>
-										<a href="#">Sukin苏芊 玫瑰果补湿日霜 120毫升</a>
-									</p>
-									<p class="clearfix">
-										<strong class="c065">￥89</strong> <s>￥399</s>
-									</p>
-								</div>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<!-- 主要内容 -->
-			<div class="mianContent">
-				<!-- 商品筛选 -->
-				<div class="screen">
-					<!-- <h4 class="srenTitle clearfix">
-						<span class="sreA">美可卓<em>×</em></span>
-						<span class="sreA">0-199<em>×</em></span>	
-					</h4> -->
-					<div class="srenArea">
-						<div class="brand clearfix">
-							<h5>品牌</h5>
-							<ul class="clearfix">
-								<li><a href="#">swisse</a><em>×</em></li>
-								<li><a href="#">blackmore</a><em>×</em></li>
-								<li><a href="#">natures,way</a><em>×</em></li>
-								<li><a href="#">healthy care</a><em>×</em></li>
-								<li><a href="#">bio island</a><em>×</em></li>
-								<li><a href="#">美可卓</a><em>×</em></li>
-							</ul>
-						</div>
-						<div class="price clearfix">
-							<h5>价格</h5>
-							<ul class="clearfix">
-								<li><a href="#">0-199</a></li>
-								<li><a href="#">200-399</a></li>
-								<li><a href="#">400-599</a></li>
-								<li><a href="#">600-799</a></li>
-								<li><a href="#">800以上</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<!-- 筛选排序 -->
-				<div class="sort clearfix">
-					<ul class="condition clearfix">
-						<li><a href="#">默认</a></li>
-						<li><a href="#">销量</a></li>
-						<li><a href="#">评价</a></li>
-						<li><a href="#">新品</a></li>
-						<li><a href="#">价格</a></li>
-					</ul>
-					<div class="change">
-						<span class="left">&lt;</span> <span class="right">&gt;</span>
-					</div>
-				</div>
+			<div class="mianContent" style="float: left;margin-top: 20px;min-height: 200px">
 				<!-- 商品内容 -->
-				<div class="product">
+				<div class="product" style="margin: auto;">
+				
+				<% if(((List<Goods>)request.getAttribute("gs")).size()==0){
+					%>
+					
+					<span style="font-size: 1cm;color: #00A9ED;font-weight: bold;margin-top: 50px;display: block;">您尚未收藏任何商品！</span>
+					<%
+				}else{ %>
 					<ul class="clearfix">
-
-
 						<%
 							List<Goods> gs=(List<Goods>)request.getAttribute("gs");
-														for(Goods  g:gs){
+																		for(Goods  g:gs){
 						%>
 
 						<li style="margin-right: 8px">
-							<div class="hoverShow collect">
-							</div> <!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
+							<div class="hoverShow collect"></div> <!-- <div class="hoverShow wish"><em></em>加入心愿单</div> -->
 							<div class="show">
-								<a class="add" href="car/add?pid=<%=g.getGoodsid() %>">加入购物车</a> <a class="contrast" href="fav/add?pid=<%=g.getGoodsid() %>">添加到收藏夹</a>
+								<a class="add" href="car/add?pid=<%=g.getGoodsid()%>">加入购物车</a>
+								<a class="contrast" href="fav/drop?pid=<%=g.getGoodsid()%>">移除到收藏夹</a>
 							</div>
 							<div class="proImg">
 								<a href="#"> <img class="lazy" src="<%=g.getGoodspic()%>"
@@ -884,21 +599,8 @@
 							}
 						%>
 					</ul>
-				</div>
-				<!-- 底部页码 -->
-				<div class="footNum">
-					<form method="post" action="product/list">
-					<ul>
-					<li class="pre">当前第<%=request.getAttribute("nowPage") %>页/总共<%=request.getAttribute("allPage") %>,每页<%=request.getAttribute("count") %>条/总共<%=request.getAttribute("allCount") %>条</li>
-						<li class="pre"><a target="_self" href="product/list?page=1">首页</a></li>
-						<li class="pre"><a target="_self" href="product/list?page=<%=request.getAttribute("perviousPage") %>">上一页</a></li>
-						<li class="last"><a target="_self" href="product/list?page=<%=request.getAttribute("nextPage") %>">下一页</a></li>
-						<li class="last"><a target="_self" href="product/list?page=<%=request.getAttribute("allPage") %>">尾页</a></li>
-						<li class="txt">向第</li>
-						<li class="ipt"><input type="text" name="page"></li>
-						<li><button  type="submit">跳转</button></li>
-					</ul>
-					</form>
+					
+					<%} %>
 				</div>
 			</div>
 		</div>

@@ -14,7 +14,7 @@ public class Orders implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/** 订单编号. */
-	private Integer orderid;
+	private String orderid;
 
 	/** 下单时间. */
 	private String orderdate;
@@ -31,6 +31,9 @@ public class Orders implements Serializable {
 	/** 用户编号. */
 	private Integer userid;
 
+	/** 收货人. */
+	private String name;
+
 	/**
 	 * 僐儞僗僩儔僋僞.
 	 */
@@ -43,7 +46,7 @@ public class Orders implements Serializable {
 	 * @param orderid
 	 *            订单编号
 	 */
-	public void setOrderid(Integer orderid) {
+	public void setOrderid(String orderid) {
 		this.orderid = orderid;
 	}
 
@@ -52,7 +55,7 @@ public class Orders implements Serializable {
 	 * 
 	 * @return 订单编号
 	 */
-	public Integer getOrderid() {
+	public String getOrderid() {
 		return this.orderid;
 	}
 
@@ -149,6 +152,25 @@ public class Orders implements Serializable {
 	 */
 	public Integer getUserid() {
 		return this.userid;
+	}
+
+	/**
+	 * 收货人 傪愝掕偟傑偡.
+	 * 
+	 * @param name
+	 *            收货人
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	/**
+	 * 收货人 傪庢摼偟傑偡.
+	 * 
+	 * @return 收货人
+	 */
+	public String getName() {
+		return this.name;
 	}
 
 	/**

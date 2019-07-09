@@ -13,7 +13,7 @@ public class Items implements Serializable {
 	/** serialVersionUID. */
 	private static final long serialVersionUID = 1L;
 
-	/** 订单详情编号. */
+	/** itemid. */
 	private Integer itemid;
 
 	/** 商品数量. */
@@ -23,7 +23,7 @@ public class Items implements Serializable {
 	private Integer goodsid;
 
 	/** 订单编号. */
-	private Integer orderid;
+	private String orderid;
 
 	/**
 	 * 僐儞僗僩儔僋僞.
@@ -32,19 +32,19 @@ public class Items implements Serializable {
 	}
 
 	/**
-	 * 订单详情编号 傪愝掕偟傑偡.
+	 * itemid 傪愝掕偟傑偡.
 	 * 
 	 * @param itemid
-	 *            订单详情编号
+	 *            itemid
 	 */
 	public void setItemid(Integer itemid) {
 		this.itemid = itemid;
 	}
 
 	/**
-	 * 订单详情编号 傪庢摼偟傑偡.
+	 * itemid 傪庢摼偟傑偡.
 	 * 
-	 * @return 订单详情编号
+	 * @return itemid
 	 */
 	public Integer getItemid() {
 		return this.itemid;
@@ -94,7 +94,7 @@ public class Items implements Serializable {
 	 * @param orderid
 	 *            订单编号
 	 */
-	public void setOrderid(Integer orderid) {
+	public void setOrderid(String orderid) {
 		this.orderid = orderid;
 	}
 
@@ -103,7 +103,7 @@ public class Items implements Serializable {
 	 * 
 	 * @return 订单编号
 	 */
-	public Integer getOrderid() {
+	public String getOrderid() {
 		return this.orderid;
 	}
 

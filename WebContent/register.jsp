@@ -10,7 +10,7 @@
 <head>
 <base href="<%=basePath%>">
 	<meta charset="UTF-8">
-	<title>登录页-澳猫团</title>
+	<title>注册页-澳猫团</title>
 	<link rel="shortcut icon" href="images/favicon.jpg">
     <link rel="bookmark"href="images/favicon.jpg" />
 	<link rel="stylesheet" href="css/reset.css">
@@ -32,7 +32,7 @@
 				<a href="index.jsp">澳猫网</a>
 			</div>
 			<div class="LAStxt">
-				欢迎登录
+				欢迎注册
 			</div>
 			<div class="search">
 				<div class="txt">
@@ -61,10 +61,10 @@
 			<div class="mainContent boxS">
 				<div class="MCup clearfix">
 					<div class="MCright W310">
-						<form method="post" action="user/login">
+						<form method="post" action="user/register">
 						<h3 class="clearfix">
-							<span>登录澳猫团</span>
-							<a target="_blank" href="register.jsp">免费注册</a>
+							<span>注册澳猫团</span>
+							<a target="_blank" href="login.jsp">登录</a>
 						</h3>
 						<p class="userName">
 							<em></em>
@@ -73,6 +73,10 @@
 						<p class="passWord">
 							<em></em>
 							<input class="W310" name="password" placeholder="请输入密码" type="password">
+						</p>
+						<p class="userName">
+							<em></em>
+							<input class="W310" name="nickname" placeholder="请输入昵称" type="text">
 						</p>
 						<p class="clearfix yzm">
 							<input type="text" placeholder="验证码">
@@ -86,34 +90,17 @@
 							<span>记住密码</span>
 							<a target="_blank" href="#">忘记密码？</a>
 						</p>
-						<input class="loGin W310" type="submit" value="登录" />
+						<input class="loGin W310" type="submit" value="注册" />
 						</form>
 					</div>
 					<div class="MCleft W115">
-						<img src="images/AppEr.png" alt="二维码">
-						<p>扫码下载客户端</p>
-						<div class="pL">
-							<span>手机可直接访问</span>
-							<strong>m.aumalls.com</strong>
-						</div>
+						<img src="images/default.jpg"  style="width: 100px;height: 100px" alt="二维码">
+						<p>请选择用户头像</p>
+<!-- 						<div class="pL"> -->
+<!-- 							<span><input type="file" /></span> -->
+<!-- 							<strong>m.aumalls.com</strong> -->
+<!-- 						</div> -->
 					</div>
-				</div>
-				<div class="MCdown">
-					<p>使用其他账户登录</p>
-					<ul>
-						<li class="clearfix">
-							<em></em>
-							<a href="">QQ</a>
-						</li>
-						<li class="clearfix">
-							<em></em>
-							<a href="">微博</a>
-						</li>
-						<li class="clearfix">
-							<em></em>
-							<a href="">微信</a>
-						</li>
-					</ul>
 				</div>
 			</div>
 		</div>

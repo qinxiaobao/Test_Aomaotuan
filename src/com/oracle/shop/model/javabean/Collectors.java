@@ -25,6 +25,9 @@ public class Collectors implements Serializable {
 	/** 商品编号. */
 	private Integer goodsid;
 
+	/** 用户编号. */
+	private Integer userid;
+
 	/**
 	 * 僐儞僗僩儔僋僞.
 	 */
@@ -105,6 +108,25 @@ public class Collectors implements Serializable {
 	 */
 	public Integer getGoodsid() {
 		return this.goodsid;
+	}
+
+	/**
+	 * 用户编号 傪愝掕偟傑偡.
+	 * 
+	 * @param userid
+	 *            用户编号
+	 */
+	public void setUserid(Integer userid) {
+		this.userid = userid;
+	}
+
+	/**
+	 * 用户编号 傪庢摼偟傑偡.
+	 * 
+	 * @return 用户编号
+	 */
+	public Integer getUserid() {
+		return this.userid;
 	}
 
 	/**

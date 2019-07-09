@@ -11,7 +11,7 @@ import com.oracle.shop.model.dao.ProductDAO;
 import com.oracle.shop.model.javabean.Goods;
 
 /**
- * 杩欐牱瀹氫箟鐨勪竴涓櫘閫歫ava绫诲氨鍙樻垚浜嗕竴涓猻pringmvc妗嗘灦涓嬮潰鐨勪竴涓悗鍙扮粍浠讹紙鍙互瀵瑰墠鍙扮綉椤垫彁渚涙湇鍔★級
+ * 这样定义的一个普通java类就变成了一个springmvc框架下面的一个后台组件（可以对前台网页提供服务）
  * @author Administrator
  *
  */
@@ -23,15 +23,27 @@ public class ProductController {
 	private ProductDAO dao;
 	
 	/**
-	 * 杩欏氨鏄竴涓猻pringmvc涓嬮潰鐨勪竴涓悗鍙癱ontroller鐨勪竴涓悗鍙版柟娉�
+	 * 这就是一个springmvc下面的一个后台controller的一个后台方法
 	 * @return
 	 */
 	@RequestMapping("/list")
-	public String listProduct(Model  m){
-		System.out.println("杩欐槸杩涘叆浜嗗悗鍙扮殑鏂规硶锛�");
-		List<Goods>  gs=dao.listGoods();
-		System.out.println(gs);
-		m.addAttribute("gs", gs);//璁插悗鍙癲ao鏌ヨ鍑烘潵鐨勪竴涓泦鍚堥噷闈㈢殑鍟嗗搧淇℃伅瀛樺偍鍒颁竴涓洅瀛愰噷
+	public String listProduct(Model  m,int page){
+		System.out.println("这是进入了后台的方法，");
+		int count=16;//后台规定的每页分的条数
+		List<Goods>  gs=dao.listGoods((page-1)*count,count);
+		m.addAttribute("gs", gs);//讲后台dao查询出来的一个集合里面的商品信息存储到一个盒子里
+		
+		int allCount=dao.getAllCountOfGoods();//查询数据库获取总行数
+		int allPage=allCount%count==0?allCount/count:allCount/count+1;//总页数
+		int perviousPage=page-1==0?1:page-1;
+		int nextPage=page==allPage?allPage:page+1;
+		m.addAttribute("perviousPage", perviousPage);
+		m.addAttribute("nextPage", nextPage);
+		m.addAttribute("allPage", allPage);
+		m.addAttribute("nowPage", page);
+		m.addAttribute("allCount", allCount);
+		m.addAttribute("count", count);
+		
 		return "index";
 	}
 

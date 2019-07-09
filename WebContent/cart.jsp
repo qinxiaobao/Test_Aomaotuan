@@ -16,7 +16,8 @@
 <base href="<%=basePath%>">
 	<meta charset="UTF-8">
 	<title>购物车-澳猫团</title>
-	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="shortcut icon" href="images/favicon.jpg">
+    <link rel="bookmark"href="images/favicon.jpg" />
 	<link rel="stylesheet" href="css/reset.css">
 	<link rel="stylesheet" href="css/base.css">
 	<link rel="stylesheet" href="css/Cart.css">
@@ -57,9 +58,9 @@
 			};
 	});
 	// 删除
-	$('.IAbdw .delet').click(function(event) {
-		$(this).parentsUntil('.IAbdArea').remove();
-	});
+// 	$('.IAbdw .delet').click(function(event) {
+// 		$(this).parentsUntil('.IAbdArea').remove();
+// 	});
 	// 购物车金额结算
 	$('.IAul .reduce').click(function(event) {
 		var n=parseFloat($(this).siblings('input').val());
@@ -309,8 +310,8 @@
 		<form method="post" action="order/add">
 		<div class="IAbd">
 			<h4>
-				<span class="Allcheck checkbox"></span>
-<!-- 				<span class="tax">保税仓发货</span> -->
+				<!-- <span class="Allcheck checkbox"></span>-->
+                <!--<span class="tax">保税仓发货</span> -->
 				<span>澳洲直邮</span>
 			</h4>
 			<ul class="IAbdArea">
@@ -318,7 +319,7 @@
 					for(Goods c:sc.keySet()){
 				%>
 				<li class="IAbdw">
-					<span class="lincheck checkbox"></span>
+					<!--<span class="lincheck checkbox"></span>-->
 					<input type="checkbox"  name="pid" value="<%=c.getGoodsid()%>"/>
 					<img src="<%=c.getGoodspic() %>" alt="">
 					<p>
@@ -347,8 +348,8 @@
 						</li>
 						<li class="Lastprice">¥ <u><%=c.getGoodsprice()*sc.get(c) %></u></li>
 						<li class="last btn">
-							<button>移入收藏夹</button><br>
-							<button class="delet">删除</button>
+							<a>移入收藏夹</a><br>
+							<a class="delet"  href="javascript:deleteProduct(<%=c.getGoodsid() %>)">删除</a>
 						</li>
 					</ul>
 				</li>
@@ -356,6 +357,13 @@
 				
 				<%} %>
 			</ul>
+			<script type="text/javascript">
+			function deleteProduct(pid){
+				if(window.confirm('确认删除这个商品吗')){
+					location.href='car/delete?pid='+pid;
+				}
+			}
+			</script>
 			<div class="account">
 				<ul>
 					<li>收货人:<input type="text" name="name" style="height: 25px;font-size: 14px;box-shadow:0px 0px 3px orange"/></li>

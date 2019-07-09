@@ -12,7 +12,8 @@
 <base href="<%=basePath%>">
 <meta charset="UTF-8">
 <title>全部订单-我的订单-会员中心-澳猫团</title>
-<link rel="shortcut icon" href="favicon.ico">
+<link rel="shortcut icon" href="images/favicon.jpg">
+<link rel="bookmark"href="images/favicon.jpg" />
 <link rel="stylesheet" href="css/reset.css">
 <link rel="stylesheet" href="css/base.css">
 <link rel="stylesheet" href="css/Member.css">

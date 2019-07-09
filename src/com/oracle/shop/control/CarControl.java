@@ -25,6 +25,19 @@ import com.oracle.shop.model.javabean.Users;
 @RequestMapping("/car")
 public class CarControl {
 	
+	@RequestMapping("/delete")
+	public String deleteProductFormShopcar(int pid,HttpSession session){
+		//1.获取用户在网页上要删除的商品id
+		//2.调用dao方法将这个id的商品从购物车表中删除
+		//从session中获取登录的用户编号
+		int userid=((Users)session.getAttribute("logineduser")).getUserid();
+		System.out.println("删除购物车的方法");
+		int result=dao.deleteGoodsFromShopcar(userid, pid);
+		System.out.println(result>0?"删除成功":"删除失败");
+		return "redirect:list";
+	}
+	
+	
 	@Autowired
 	private CarDAO dao;
 

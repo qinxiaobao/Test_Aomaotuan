@@ -25,6 +25,9 @@ public class Users implements Serializable {
 	/** 昵称. */
 	private String nicheng;
 
+	/** 用户头像. */
+	private String userimage;
+
 	/**
 	 * 僐儞僗僩儔僋僞.
 	 */
@@ -105,6 +108,25 @@ public class Users implements Serializable {
 	 */
 	public String getNicheng() {
 		return this.nicheng;
+	}
+
+	/**
+	 * 用户头像 傪愝掕偟傑偡.
+	 * 
+	 * @param userimage
+	 *            用户头像
+	 */
+	public void setUserimage(String userimage) {
+		this.userimage = userimage;
+	}
+
+	/**
+	 * 用户头像 傪庢摼偟傑偡.
+	 * 
+	 * @return 用户头像
+	 */
+	public String getUserimage() {
+		return this.userimage;
 	}
 
 	/**

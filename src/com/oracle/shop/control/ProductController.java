@@ -46,5 +46,14 @@ public class ProductController {
 		
 		return "index";
 	}
+	
+	@RequestMapping("/detail")
+	public String detailProduct(Model m,int goodsid){
+		Goods good=dao.selectGood(goodsid);
+		
+		m.addAttribute("oneGood", good);
+		return "goodsdetail";
+		
+	}
 
 }

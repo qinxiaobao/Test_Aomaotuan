@@ -26,4 +26,7 @@ public interface ProductDAO {
 	@Select("select count(*) from goods")
 	public int getAllCountOfGoods();
 	
+	@Select("select * from goods where goodsid=#{goodsid}")
+	public Goods selectGood(@Param("goodsid")int goodsid);
+	
 }

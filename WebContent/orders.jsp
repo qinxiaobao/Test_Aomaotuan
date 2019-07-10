@@ -1,3 +1,6 @@
+<%@page import="com.oracle.shop.model.javabean.Goods"%>
+<%@page import="com.oracle.shop.model.javabean.Orders"%>
+<%@page import="java.util.Map"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
@@ -643,7 +646,6 @@
 								<ul>
 									<li class="sectTime">近三个月订单</li>
 									<li class="sectDetail">订单详情</li>
-									<li class="consignee">收货人</li>
 									<li class="sum">金额</li>
 									<li class="all">全部状态</li>
 									<li class="handle">操作</li>
@@ -652,173 +654,55 @@
 							<!-- 个人中心的内容 -->
 							<!-- 全部订单 -->
 							<div class="MeOrder">
+								<% Map<Orders, Map<Goods, Integer>> od=(Map<Orders, Map<Goods, Integer>>)request.getAttribute("orderDetail");
+									for(Orders o:od.keySet()){
+								%>
+									<div style="border: 1px solid blue;padding-top: 20px">
+									<h1 style="margin-bottom: 20px;margin-left: 20px;text-shadow: 0px 0px 2px">订单编号:<%=o.getOrderid() %>&nbsp;&nbsp;&nbsp;
+									下单时间:<%=o.getOrderdate() %>&nbsp;&nbsp;&nbsp;
+									收货人:<%=o.getName() %>&nbsp;&nbsp;&nbsp;
+									收货地址:<%=o.getAddress()%>&nbsp;&nbsp;&nbsp;
+									</h1>
+									<% for(Goods g:od.get(o).keySet()){ %>
+								
 								<!-- 报关中 -->
 								<div class="merchandiseList">
-									<div class="ListHead">
-										<span>2016-01-05 09:43:10</span>
-									</div>
 									<div class="ListArea">
+										
 										<ul class="ListTable">
+										
 											<li class="one clearfix"><a href="">
 													<div class="pruPic">
-														<img src="images/lproduct10.png" alt="">
+														<img src="<%=g.getGoodspic() %>" alt="">
 													</div>
-													<div class="pruTitle">Swisse 澳洲活力胶原蛋白液
-														500毫升/瓶促进皮肤弹性和去皱纹，促进发质和指甲的生长。</div>
+													<div class="pruTitle"><%=g.getGoodsname() %></div>
 											</a>
 												<div class="pruNum">
-													×<i>2</i>
+													×<i><%=od.get(o).get(g) %></i>
 												</div></li>
-											<li class="two">马云</li>
 											<li class="three">
-												<p>总额￥450.00</p>
+												<p>总额￥<%=od.get(o).get(g)*g.getGoodsprice() %>/p>
 												<p>在线支付</p>
 												<p>含税/运费：￥0.00</p>
 											</li>
 											<li class="four">
-												<p class="ing">报关中</p>
+												<p class="ing"><%=o.getOrderstatus() %></p>
 												<p>
 													<a href="">订单详情</a>
 												</p>
 											</li>
 											<li class="five"><a href="">取消订单</a></li>
+											
 										</ul>
 									</div>
+									
 								</div>
-								<!-- 待付款 -->
-								<div class="merchandiseList">
-									<div class="ListHead">
-										<span>2016-01-05 09:43:10</span>
+								<%} %>
 									</div>
-									<div class="ListArea">
-										<ul class="ListTable">
-											<li class="one clearfix"><a href="">
-													<div class="pruPic">
-														<img src="images/lproduct10.png" alt="">
-													</div>
-													<div class="pruTitle">Swisse 澳洲活力胶原蛋白液
-														500毫升/瓶促进皮肤弹性和去皱纹，促进发质和指甲的生长。</div>
-											</a>
-												<div class="pruNum">
-													×<i>2</i>
-												</div></li>
-											<li class="two">马云</li>
-											<li class="three">
-												<p>总额￥450.00</p>
-												<p>在线支付</p>
-												<p>含税/运费：￥0.00</p>
-											</li>
-											<li class="four">
-												<p class="ing">待付款</p>
-											</li>
-											<li class="five"><a href="">取消订单</a> <a href="">去付款</a>
-											</li>
-										</ul>
-									</div>
-								</div>
-								<!-- 待发货 -->
-								<div class="merchandiseList">
-									<div class="ListHead">
-										<span>2016-01-05 09:43:10</span> <span>订单号：<em>11807098859</em></span>
-									</div>
-									<div class="ListArea">
-										<ul class="ListTable">
-											<li class="one clearfix"><a href="">
-													<div class="pruPic">
-														<img src="images/lproduct10.png" alt="">
-													</div>
-													<div class="pruTitle">Swisse 澳洲活力胶原蛋白液
-														500毫升/瓶促进皮肤弹性和去皱纹，促进发质和指甲的生长。</div>
-											</a>
-												<div class="pruNum">
-													×<i>2</i>
-												</div></li>
-											<li class="two">马云</li>
-											<li class="three">
-												<p>总额￥450.00</p>
-												<p>在线支付</p>
-												<p>含税/运费：￥0.00</p>
-											</li>
-											<li class="four">
-												<p class="ing">报关成功，即将发货</p>
-												<p>
-													<a href="">订单详情</a>
-												</p>
-											</li>
-											<li class="five"><a href="">提醒发货</a></li>
-										</ul>
-									</div>
-								</div>
-								<!-- 待收货 -->
-								<div class="merchandiseList">
-									<div class="ListHead">
-										<span>2016-01-05 09:43:10</span> <span>订单号：<em>11807098859</em></span>
-									</div>
-									<div class="ListArea">
-										<ul class="ListTable">
-											<li class="one clearfix"><a href="">
-													<div class="pruPic">
-														<img src="images/lproduct10.png" alt="">
-													</div>
-													<div class="pruTitle">Swisse 澳洲活力胶原蛋白液
-														500毫升/瓶促进皮肤弹性和去皱纹，促进发质和指甲的生长。</div>
-											</a>
-												<div class="pruNum">
-													×<i>2</i>
-												</div></li>
-											<li class="two">马云</li>
-											<li class="three">
-												<p>总额￥450.00</p>
-												<p>在线支付</p>
-												<p>含税/运费：￥0.00</p>
-											</li>
-											<li class="four">
-												<p class="ing">已发货</p>
-												<p>
-													<a href="">订单详情</a>
-												</p>
-												<p>
-													<a href="">物流详情</a>
-												</p>
-											</li>
-											<li class="five"><a href="">确认收货</a></li>
-										</ul>
-									</div>
-								</div>
-								<!-- 待评价 -->
-								<div class="merchandiseList">
-									<div class="ListHead">
-										<span>2016-01-05 09:43:10</span> <span>订单号：<em>11807098859</em></span>
-									</div>
-									<div class="ListArea">
-										<ul class="ListTable">
-											<li class="one clearfix"><a href="">
-													<div class="pruPic">
-														<img src="images/lproduct10.png" alt="">
-													</div>
-													<div class="pruTitle">Swisse 澳洲活力胶原蛋白液
-														500毫升/瓶促进皮肤弹性和去皱纹，促进发质和指甲的生长。</div>
-											</a>
-												<div class="pruNum">
-													×<i>2</i>
-												</div></li>
-											<li class="two">马云</li>
-											<li class="three">
-												<p>总额￥450.00</p>
-												<p>在线支付</p>
-												<p>含税/运费：￥0.00</p>
-											</li>
-											<li class="four">
-												<p>交易成功</p>
-												<p>
-													<a href="">订单详情</a>
-												</p>
-											</li>
-											<li class="five"><a href="">删除订单</a> <a href="">我要评论</a>
-											</li>
-										</ul>
-									</div>
-								</div>
+								
+								<%} %>
+								
+								
 							</div>
 						</div>
 					</div>

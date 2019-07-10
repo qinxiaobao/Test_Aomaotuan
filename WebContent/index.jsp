@@ -46,7 +46,7 @@
 							
 							<%---这里应该是让安全退出的超级链接请求到后台的control方法，
 							方法里需要移除之前在session中保存的用户信息，然后后台直接跳转道网站首页？？？ --%>
-							<a href="user/out">安全退出</a>
+							<a target="_self" href="user/out">安全退出</a>
 							<%
 						} %>
 				</div>
@@ -865,7 +865,7 @@
 								<a class="add" href="car/add?pid=<%=g.getGoodsid() %>">加入购物车</a> <a class="contrast" href="fav/add?pid=<%=g.getGoodsid() %>">添加到收藏夹</a>
 							</div>
 							<div class="proImg">
-								<a href="#"> <img class="lazy" src="<%=g.getGoodspic()%>"
+								<a href="product/detail?goodsid=<%=g.getGoodsid()%>"> <img class="lazy" src="<%=g.getGoodspic()%>"
 									data-original="<%=g.getGoodspic()%>" alt="">
 								</a>
 							</div>

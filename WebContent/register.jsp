@@ -94,8 +94,8 @@
 						</form>
 					</div>
 					<div class="MCleft W115">
-						<img src="images/default.jpg"  style="width: 100px;height: 100px" alt="二维码">
-						<p>请选择用户头像</p>
+						<img src="images/touxiang.jpg"  style="width: 100px;height: 100px" alt="二维码">
+						
 <!-- 						<div class="pL"> -->
 <!-- 							<span><input type="file" /></span> -->
 <!-- 							<strong>m.aumalls.com</strong> -->
